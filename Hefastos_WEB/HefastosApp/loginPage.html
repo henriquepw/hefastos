@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<!-- modificação besta -->
+<head>
+    
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Hefastos</title>
+	
+	<!-- Materialize -->
+	<!-- Compiled and minified CSS  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0"></script>
+
+    <!-- css -->  
+	<link href="arquivo.css" rel="stylesheet" />
+	<link href="login_sign.js" rel="javascript" />
+
+	<!-- Angular -->
+	<script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/lib/angular-ui-router.min.js"></script>
+    <script src="js/lib/angular-sanitize.min.js"></script>
+    <script src="js/lib/angular-animate.min.js"></script>
+    <script src="js/lib/angular-aria.min.js"></script>
+    
+    <!-- Angular Material -->
+    <script src="js/lib/angular-material.min.js"></script>
+    <link rel="stylesheet" href="css/angular-material.min.css">
+
+    <!-- App -->
+    <script src="js/app.js"></script>
+    <script src="js/router/state.js"></script>
+	
+    <!-- Service -->
+    <script src="js/service/professorService.js"></script>
+
+    <!-- controller -->
+    <script src="js/controller/professorController.js"></script>
+
+</head>
+
+<body>
+
+	<div id="box-div" ng-controller="professorController">
+	<div class="login-box">
+		<div class="lb-header">
+			<a href="#" class="active" id="login-box-link">Login</a>
+			<a href="signUpPage.html" id="signup-box-link">Cadastrar</a>
+		</div>
+		<div class="social-login">
+			<a href="#">
+				<i class="fa fa-facebook fa-lg"></i>
+				Facebook
+			</a>
+			<a href="#">
+				<i class="fa fa-google-plus fa-lg"></i>
+				Google
+			</a>
+		</div>
+		<form name="formLogin" class="email-login" method="post" ng-submit="loginProfessor()">
+			<div class="u-form-group">
+				<input id="email" type="email" name="email" placeholder="Email" required="required" ng-model="professor.email"/>
+			</div>
+			<div class="u-form-group">
+				<input id="pass" type="password" placeholder="Senha" required="required" ng-model="professor.senha"/>
+			</div>
+			<div class="u-form-group">
+                <a class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action" href="index.html">Login</a>
+			</div>
+			<div class="u-form-group">
+				<a href="#" class="forgot-password">Esqueceu a senha?</a>
+			</div>
+		</form>
+	</div>
+	</div>
+
+    
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+        
+    
+</body>
+
+</html>

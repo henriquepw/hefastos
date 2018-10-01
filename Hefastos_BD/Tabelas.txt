@@ -1,0 +1,54 @@
+CREATE TABLE tb_professor (
+    nome VARCHAR(200),
+    email VARCHAR(50) UNIQUE,
+    senha VARCHAR(18),
+    id_professor INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
+    );
+    
+CREATE TABLE tb_disciplina (
+    nome VARCHAR(200),
+    cod_d INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
+    );
+
+CREATE TABLE tb_conteudo (
+    nome VARCHAR(200),
+    cod_c INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    cod_d INT UNSIGNED,
+    CONSTRAINT fk_conteudo_disciplina FOREIGN KEY (cod_d) REFERENCES tb_disciplina (cod_d)
+    );
+
+CREATE TABLE tb_questoes (
+    fonte VARCHAR(200),
+    enunciado VARCHAR(8001),
+    descricao VARCHAR(8001),
+    cod_q INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
+    );
+
+CREATE TABLE tb_conteudo_questoes (
+    cod_c INT UNSIGNED,
+    cod_q INT UNSIGNED,
+    PRIMARY KEY(cod_c, cod_q),
+    CONSTRAINT fk_conteudo_questoes_conteudo FOREIGN KEY (cod_c) REFERENCES tb_conteudo (cod_c),
+    CONSTRAINT fk_conteudo_questoes_questoes FOREIGN KEY (cod_q) REFERENCES tb_questoes (cod_q)
+    );
+
+CREATE TABLE tb_questoes_fechadas (
+    resposta INT,
+    cod_q INT UNSIGNED PRIMARY KEY,
+    CONSTRAINT fk_questoes_questoes_fechadas FOREIGN KEY (cod_q) REFERENCES tb_questoes (cod_q)
+    );
+
+CREATE TABLE tb_questoes_abertas (
+    resposta VARCHAR(9000),
+    cod_q INT UNSIGNED PRIMARY KEY,
+    CONSTRAINT fk_questoes_questoes_abertas FOREIGN KEY (cod_q) REFERENCES tb_questoes (cod_q)
+    );
+
+CREATE TABLE tb_alternativas (
+    enunciado VARCHAR(8001),
+    resposta BOOLEAN,
+    cod_q INT UNSIGNED,
+    cod_a INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    CONSTRAINT fk_altenativas_questoes_fechadas FOREIGN KEY (cod_q) REFERENCES tb_questoes_fechadas (cod_q) 
+    );
+    

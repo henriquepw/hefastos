@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="app">
+    
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Hefastos</title>
+	
+	<!-- Materialize -->
+	<!-- Compiled and minified CSS  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0"></script>
+	
+	<!-- Angular -->
+	<script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/lib/angular-ui-router.min.js"></script>
+    <script src="js/lib/angular-sanitize.min.js"></script>
+    <script src="js/lib/angular-animate.min.js"></script>
+    <script src="js/lib/angular-aria.min.js"></script>
+    
+    <!-- Angular Material -->
+    <script src="js/lib/angular-material.min.js"></script>
+    <link rel="stylesheet" href="css/angular-material.min.css">
+
+    <!-- App -->
+    <script src="js/app.js"></script>
+    <script src="js/router/state.js"></script>
+	
+    <!-- Service -->
+    <script src="js/service/professorService.js"></script>
+    <script src="js/service/disciplinaService.js"></script>
+    <script src="js/service/assuntoService.js"></script>
+    <script src="js/service/provaService.js"></script>
+    <script src="js/service/questaoAbertaService.js"></script>
+    <script src="js/service/questaoFechadaService.js"></script>
+
+    <!-- Controller -->
+    <script src="js/controller/menuController.js"></script>
+    <script src="js/controller/disciplinaController.js"></script>
+    <script src="js/controller/assuntoController.js"></script>
+    <script src="js/controller/provaController.js"></script>
+    <script src="js/controller/questaoAbertaController.js"></script>
+    <script src="js/controller/questaoFechadaController.js"></script>
+    
+    <!-- Inicializações -->
+    <script>
+        window.onload=function(){
+			$(document).ready(function() {
+				$('select').material_select();
+                $('.modal').modal();
+                $('#textarea1').val('New Text');
+				$('#textarea1').trigger('autoresize');
+                $(".button-collapse").sideNav({
+                    menuWidth: 330
+                });
+                $(".dropdown-button").dropdown();
+			});
+		}//]]>
+        $('.button-collapse').sideNav('show');
+    </script>
+    
+    <!-- Funcionalidades -->
+    <script>
+    </script>
+
+    
+</head>
+
+<body>
+	<!-- Barra de navegação -->
+    <nav class="navbar grey darken-4">
+        <div class="row">
+            <div class="col s3">
+                <div class="nav-wrapper">
+                    <a href="#" data-activates="slide-out" class="button-collapse btn-floating btn-large grey darken-4 show-on-large"><i class="material-icons">menu</i></a>
+                    <ul id="dropdown1" class="dropdown-content">
+                      <li><a ui-sref="tabelaDisciplinas">Disciplinas</a></li>
+                      <li><a ui-sref="tabelaAssuntos">Assuntos</a></li>
+                      <li><a ui-sref="tabelaQuestoes">questões</a></li>
+                      <li class="divider"></li>
+                      <li><a ui-sref="tabelaProvas">Provas</a></li>
+                    </ul>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Tabelas de listagem<i class="material-icons right">arrow_drop_down</i></a></li>
+                </div>
+            </div>
+            <div class="col s7">
+                <div class="nav-wrapper">
+                    <form>
+                        <div class="input-field">
+                            <input type="search" id="pesquisa" name="pesquisa" placeholder="Pesquisar provas">
+                            <label class="label-icon" for="pesquisa"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="nav-wrapper">
+                    <a href="home.html" class="brand-logo">Hefastos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Layout da página -->
+	<div class="row">
+
+		<!-- Navegação lateral -->
+		<div class="col s3">	
+            <ul class="collapsible" data-collapsible="expansable">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">add</i>Disciplina 1</div>
+                    <div class="collapsible-body">
+                        <span>
+                            <ul class="collapsible" data-collapsible="expansable">
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">add</i>Assunto 1</div>
+                                    <div class="collapsible-body"><span>Questão 1: Lorem ipsum dolor sit amet.</span></div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">add</i>Assunto 2</div>
+                                    <div class="collapsible-body"><span>Questão 2: Lorem ipsum dolor sit amet.</span></div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">add</i>Assunto 3</div>
+                                    <div class="collapsible-body"><span>Questão 3:Lorem ipsum dolor sit amet.</span></div>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">add</i>Disciplina 2</div>
+                    <div class="collapsible-body">
+                         <span>
+                             <ul class="collapsible" data-collapsible="expansable">
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">add</i>Assunto 4</div>
+                                    <div class="collapsible-body"><span>Questão 4: Lorem ipsum dolor sit amet.</span></div>   
+                                </li>
+                                    <li>
+                                        <div class="collapsible-header"><i class="material-icons">add</i>Assunto 4</div>
+                                        <div class="collapsible-body"><span>Questão 4: Lorem ipsum dolor sit amet.</span></div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">add</i>Assunto 6</div>
+                                    <div class="collapsible-body"><span>Questão 6:Lorem ipsum dolor sit amet.</span></div>
+                                </li>
+                             </ul>
+                         </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">add</i>Disciplina 3</div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+            </ul>
+               
+       
+        </div>
+
+		<div class="col s9">
+		<!-- Conteúdo da área maior  -->
+            <div ui-view></div>
+            
+			<div class="fixed-action-btn horizontal">
+				<a class="btn-floating btn-large red">
+					<i class="large material-icons">add</i>
+				</a>
+				<ul>
+					<li><a class="btn-floating orange" href="#modalDisciplina"><i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Criar Disciplina">tab</i></a></li>
+					<li><a class="btn-floating green" href="#modalAssunto"><i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Criar Assunto">subject</i></a></li>
+					<li><a class="btn-floating blue" href="#modalProva"><i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Criar prova">description</i></a></li>
+					<li><a class="btn-floating yellow" href="#modalQuestaoAberta"><i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Criar questão">list</i></a></li>
+				</ul>
+			</div>
+		</div>
+    </div>
+    
+    <!-- Modais -->
+    
+    <!-- Criar disciplina -->
+    <div id="modalDisciplina" class="modal" ng-controller="disciplinaController">
+        <form name="criardisciplina" method="post" ng-submit="criarDisciplina()">
+            <div class="modal-content">
+                    <input type="text" name="disciplina" id="disciplina" ng-model="disciplina.nome" required placeholder="Nome da disciplina">
+            </div>
+            <div class="modal-footer">
+                <button class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action">Salvar</button>
+                <a class="modal-action modal-close waves-effect waves-green btn-flat" onclick="$('#modalDisciplina').modal('close');">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Criar assunto -->
+    <div id="modalAssunto" class="modal" ng-controller="assuntoController" ng-init="listarDisciplinas()">
+        <form name="criarAssunto" ng-submit="criarAssuntos()">
+            <div class="modal-content">
+                    <label for="disciplinas">Disciplina</label>
+                    <!-- <select id="disciplinaId" name="disciplinas" ng-model="disciplina.nome" ng-options="d.nome for d in disciplinas"> -->
+                    <select id="disciplinaId" name="disciplinas" ng-model="assunto.disciplina.id">
+                        <option ng-repeat="disciplina in disciplinas" value="{{ assunto.disciplina.id }}">{{ disciplina.nome }}</option>
+                    </select>
+                    <input type="text" name="assunto" id="assunto" ng-model="assunto.nome" placeholder="Nome do assunto" required="required">
+                    <p>{{assunto}}</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action">Salvar</button>
+                <a class="modal-action modal-close waves-effect waves-green btn-flat" onclick="$('#modalAssunto').modal('close');">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Criar prova -->
+    <div id="modalProva" class="modal" ng-controller="provaController">
+        <form name="criarDisciplina" ng-submit="gerarProva()">
+            <div class="modal-content">
+                    <div class="row">
+                        <h5 class="page-header">Prova</h5>
+                        <div class="input-field col s6">
+                            <select id="disciplinas" name="disciplinas" class="validate" ng-model="prova.disciplina">
+                                <option ng-repeat="disciplina in disciplinas" value="{{ disciplina }}">{{ disciplina.id }}</option>
+                            </select>
+                            <label for="disciplinas">Disciplina</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select id="assuntos" name="assuntos" class="validate" ng-model="prova.assunto">
+                               <option ng-repeat="assunto in assuntos" value="{{ assunto }}">{{ assunto.nome }}</option>
+                            </select>
+                            <label for="assunto">Assunto</label>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <h5 class="page-header">Questões</h5>
+                            <div class="input-field col s6">
+                                <select id="tipo" name="tipo" class="validate" ng-model="prova.tipo">
+                                    <option value="aberta">Aberta</option>
+                                    <option value="multesc">Multipla Escolha</option>
+                                    <option value="mista">Mista</option>
+                                </select>
+                                <label for="tipo">Tipo de prova</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="numero" name="numero" type="number" class="validate" ng-model="prova.numeroDeQuestoes" required>
+                                <label for="numero">Número de questões</label>
+                            </div>
+                        </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action">Salvar</button>
+                <a class="modal-action modal-close waves-effect waves-green btn-flat" onclick="$('#modalProva').modal('close');">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Criar questao aberta -->
+    <div id="modalQuestaoAberta" class="modal" ng-controller="questaoAbertaController">
+        <form name="criarQuestaoAberta" ng-submit="criarQuestaoAberta()">
+            <div class="modal-content">
+                     <div class="row">
+                         <div class="input-field col s6">
+                            <select id="disciplinas" name="disciplinas" class="validate" ng-model="questao.disciplina">
+                                <option ng-repeat="disciplina in disciplinas" value="{{ disciplina }}">{{ disciplina.nome }}</option>
+                            </select>
+                            <label for="disciplinas">Disciplina</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select id="assuntos" name="assuntos" class="validate" ng-model="questao.disciplina.assunto">
+                               <option ng-repeat="assunto in assuntos" value="{{ disciplina.assunto }}">{{ disciplina.assunto.nome }}</option>
+                            </select>
+                            <label for="assunto">Assunto</label>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" name="fonte" id="fonte" ng-model="questao.fonte">
+                            <label for="fonte">Fonte</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" name="descricao" id="descricao" ng-model="questao.descricao">
+                            <label for="Descricao">Descrição</label>
+                        </div>
+                     </div>
+                        <div class="row">
+                            <h5 class="page-header">Questão</h5>
+                            <div class="input-field col s12">
+                                <textarea id="enunciado" name="enunciado" class="materialize-textarea validate" ng-model="questao.enunciado" required="required"></textarea>
+                                <label for="enunciado">Enunciado</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea id="resposta" name="resposta" class="materialize-textarea validate" ng-model="questao.resposta" required="required"></textarea>
+                                <label for="Resposta">Resposta</label>
+                            </div>
+                        </div>
+            </div>
+            <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-green btn-flat">Salvar</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="$('#modalQuestaoAberta').modal('close');">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Criar questao fechada -->
+    <div id="modalQuestaoFechada" class="modal" ng-controller="questaoFechadaController">
+        <form name="criarQuestaoFechada">
+            <div class="modal-content">
+                     <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" name="fonte" id="fonte" ng-model="questao.fonte">
+                            <label for="fonte">Fonte</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" name="descricao" id="descricao" ng-model="questao.descricao">
+                            <label for="Descricao">Descrição</label>
+                        </div>
+                     </div>
+                        <div class="row">
+                            <h5 class="page-header">Questão</h5>
+                            <div class="input-field col s12">
+                                <textarea id="enunciado" name="enunciado" class="materialize-textarea validate" ng-model="questao.enunciado" required="required"></textarea>
+                                <label for="enunciado">Enunciado</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea id="resposta" name="resposta" class="materialize-textarea validate" ng-model="questao.resposta" required="required"></textarea>
+                                <label for="Resposta">Resposta</label>
+                            </div>
+                        </div>
+            </div>
+            <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-green btn-flat">Salvar</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="$('#modalQuestaoAberta').modal('close');">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    
+    
+    <!-- SideNav -->
+    <ul id="slide-out" class="side-nav">
+        <li><div class="userView">
+            <div class="background">
+                <img src="images/banner.jpg">
+            </div>
+                <a href="#!user"><img class="circle" src="images/kellorran.jpg"></a>
+                <a href="#!name"><span class="white-text name">Lucas Kellorran</span></a>
+                <a href="#!email"><span class="white-text email">souzaluckell@gmail.com</span></a>
+            </div></li>
+        <li><a href="#!">Minha conta</a></li>
+        <li><a href="#!">Contatos</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="loginPage.html">Log out</a></li>
+    </ul>
+
+    
+    
+    
+	<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	
+</body>
+
+</html>
+

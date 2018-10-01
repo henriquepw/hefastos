@@ -1,0 +1,33 @@
+# Service ------------------------------------------
+  *\Hefastos_Service\Worksapce\.metadata\
+  *\Hefastos_Service\Worksapce\.recommenders\
+  *\Hefastos_Service\Worksapce\HefastosServerApp\.settings\
+  *\Hefastos_Service\Worksapce\HefastosServerApp\target\
+  *\Hefastos_Service\Worksapce\HefastosServerApp\build\
+
+  bin/
+  tmp/
+  *.tmp
+  *.bak
+  *.swp
+  *~.nib
+  local.properties
+  .loadpath
+  .recommenders
+
+  .externalToolBuilders/
+
+  *.launch
+  *.pydevproject
+
+  .cproject
+  .factorypath
+  .buildpath
+  .target
+  .tern-project
+  .texlipse
+  .springBeans
+
+  .cache-main
+  .scala_dependencies
+  .worksheet

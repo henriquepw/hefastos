@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.edu.ifpb.hefastos_android">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activities.SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.delete.DeleteActivity"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.add.AdicionarActivity"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.add.AddAssuntoActivity"
+            android:parentActivityName=".activities.add.AdicionarActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.add.AdicionarActivity" />
+        </activity>
+        <activity
+            android:name=".activities.add.AddDisciplinaActivity"
+            android:parentActivityName=".activities.add.AdicionarActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.add.AdicionarActivity" />
+        </activity>
+        <activity
+            android:name=".activities.add.AddQuestaoAbertaActivity"
+            android:parentActivityName=".activities.add.AdicionarActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.add.AdicionarActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.delete.DeleteAssuntoActivity"
+            android:parentActivityName=".activities.delete.DeleteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.delete.DeleteActivity" />
+        </activity>
+        <activity
+            android:name=".activities.delete.DeleteDisciplinaActivity"
+            android:parentActivityName=".activities.delete.DeleteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.delete.DeleteActivity" />
+        </activity>
+        <activity
+            android:name=".activities.delete.DeleteQuestaoActivity"
+            android:parentActivityName=".activities.delete.DeleteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.delete.DeleteActivity" />
+        </activity>
+
+    </application>
+
+</manifest>

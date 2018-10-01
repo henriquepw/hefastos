@@ -1,0 +1,29 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="br.edu.ifpb.hefastos_android.fragments.NoItemFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:alpha="0.5"
+        app:srcCompat="@drawable/fire" />
+
+    <TextView
+        android:id="@+id/tvNoItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:alpha="1"
+        android:gravity="center_horizontal"
+        android:text="No itens"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textColor="@color/primary_text"
+        android:textSize="25dp" />
+
+</FrameLayout>
